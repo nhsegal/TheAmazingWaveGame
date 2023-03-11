@@ -1,9 +1,11 @@
-import Link from './link';
 import Chain from './Chain';
-import Pen from './Pen';
+// import Pen from './Pen';
 
 const sketch = (p) => {
+  // Chain constructor(p, length, dx, r, end, dragging) {
   const chain = new Chain(p, 800, 1, 1, 'Right side free', false);
+  let dragging = false;
+
   p.setup = ()=> {
     p.createCanvas(800, 300);
     p.textAlign(p.CENTER);
@@ -18,22 +20,31 @@ const sketch = (p) => {
     p.line(0, p.height / 2, p.width, p.height / 2);
     p.line(0, p.height / 3, p.width, p.height / 3);
     p.line(0, (2 * p.height) / 3, p.width, (2 * p.height) / 3);
+
+    if (dragging) {
+      chain.links[0].fy = p.mouseY - p.height / 2;
+    }
+    chain.links[0].py = chain.links[0].y;
+    chain.links[0].y = chain.links[0].fy;
+    chain.move();
     chain.display();
+  };
+
+  p.mousePressed = () =>{
+    if (
+      p.dist(chain.links[0].x, chain.links[0].y + p.height / 2, p.mouseX, p.mouseY)
+      < (3 * chain.linkSize) / 2
+    ) {
+      dragging = true;
+    }
+  };
+  p.mouseReleased = () =>{
+    dragging = false;
   };
 };
 
 /*
-function mousePressed() {
-  if (
-    dist(chain.links[0].x, chain.links[0].y + height / 2, mouseX, mouseY)
-    < (3 * chain.linkSize) / 2
-  ) {
-    dragging = true;
-  }
-}
-function mouseReleased() {
-  dragging = false;
-}
+
 function reset() {
   dragging = false;
   chain = new Chain(width);

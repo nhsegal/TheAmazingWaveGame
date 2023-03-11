@@ -19,25 +19,25 @@ class Pen {
     }
   }
 
-  /*
-  hitCheck() {
+  hitCheck(chain) {
+    const p = this.p;
     if (
-      this.x > chain.links[floor(this.x / chain.linkSize)].x - chain.linkSize
-      && this.x < chain.links[floor(this.x / chain.linkSize)].x + chain.linkSize
 
-      && (this.y > chain.links[floor(this.x / chain.linkSize)].y - chain.linkSize
-          + height / 2
-      && this.y < height / 2)
+      (this.x > chain.links[Math.floor(this.x / chain.linkSize)].x - chain.linkSize)
+      && (this.x < chain.links[Math.floor(this.x / chain.linkSize)].x + chain.linkSize)
 
-       || (this.y < chain.links[floor(this.x / chain.linkSize)].y + chain.linkSize
-          + height / 2
-      && this.y > height / 2)
+      && (((this.y > chain.links[Math.floor(this.x / chain.linkSize)].y - chain.linkSize
+          + p.height / 2)
+      && (this.y < p.height / 2))
+
+      || ((this.y < chain.links[Math.floor(this.x / chain.linkSize)].y + chain.linkSize
+          + p.height / 2
+      && (this.y > p.height / 2))))
 
     ) {
       this.hit = true;
     }
   }
-  */
 }
 
 export default Pen;

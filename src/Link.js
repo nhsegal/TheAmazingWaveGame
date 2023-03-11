@@ -1,17 +1,17 @@
 class Link {
-  constructor(p, x, y, s) {
+  constructor(p, x, linkSize) {
     this.p = p;
     this.x = x;
-    this.y = y;
+    this.y = 0;
     this.py = 0;
     this.fy = 0;
-    this.linkSize = s;
+    this.linkSize = linkSize;
   }
 
-  display(y) {
+  display() {
     const p = this.p;
     p.noStroke();
-    p.circle(this.x, y, this.linkSize);
+    p.circle(this.x, this.y, this.linkSize);
   }
 }
 

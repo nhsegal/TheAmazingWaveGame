@@ -1,17 +1,22 @@
 import Link from './link';
 
-export default class Chain {
-  constructor(p, len, dx, r, end, dragging) {
+class Chain {
+  constructor(p, length, dx, r, end, dragging) {
     this.p = p;
-    this.length = len;
+    this.length = length;
     this.linkSize = 5 * dx;
     this.links = [];
     this.r = r;
     this.end = end;
     this.dragging = dragging;
+
     for (let i = 0; i < this.length / this.linkSize; i += 1) {
       this.links.push(
-        new Link(p, i * this.linkSize + this.linkSize / 2, 0, this.linkSize)
+        new Link(
+          p,
+          i * this.linkSize + this.linkSize / 2,
+          this.linkSize
+        ) // Link constructor(p, x,  linkSize)
       );
     }
   }
@@ -23,9 +28,9 @@ export default class Chain {
         p.fill(250, 0, 0);
         p.noStroke();
         p.circle(
-          this.links[0].x + this.linkSize,
+          this.links[0].x + this.links[0].linkSize,
           this.links[0].y + p.height / 2,
-          this.linkSize * 3
+          this.links[0].linkSize * 3
         );
       } else {
         p.fill(0);
@@ -81,3 +86,5 @@ export default class Chain {
     }
   }
 }
+
+export default Chain;
