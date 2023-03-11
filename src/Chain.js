@@ -1,14 +1,17 @@
 import Link from './link';
 
 export default class Chain {
-  constructor(p, len) {
+  constructor(p, len, dx, r, end, dragging) {
     this.p = p;
     this.length = len;
     this.linkSize = 5 * dx;
     this.links = [];
-    for (let i = 0; i < this.length / this.linkSize; i++) {
+    this.r = r;
+    this.end = end;
+    this.dragging = dragging;
+    for (let i = 0; i < this.length / this.linkSize; i += 1) {
       this.links.push(
-        new Link(i * this.linkSize + this.linkSize / 2, 0, this.linkSize)
+        new Link(p, i * this.linkSize + this.linkSize / 2, 0, this.linkSize)
       );
     }
   }
@@ -34,11 +37,13 @@ export default class Chain {
         );
       }
     }
-    if (end === 'Right side fixed') {
+
+    if (this.end === 'Right side fixed') {
       p.fill(0, 0, 240);
     } else {
       p.fill(0, 200, 0);
     }
+
     p.circle(
       this.links[this.links.length - 1].x,
       this.links[this.links.length - 1].y + p.height / 2,
@@ -47,30 +52,30 @@ export default class Chain {
   }
 
   move() {
-    for (let i = 1; i < this.links.length - 1; i++) {
-      this.links[i].fy = r
-          * r
+    for (let i = 1; i < this.links.length - 1; i += 1) {
+      this.links[i].fy = this.r
+          * this.r
           * (this.links[i - 1].y - 2 * this.links[i].y + this.links[i + 1].y)
         + 2 * this.links[i].y
         - this.links[i].py;
     }
-    if (end == 'Right side free') {
-      chain.links[chain.links.length - 1].fy = -r
-          * r
-          * (this.links[chain.links.length - 1].y
-            - this.links[chain.links.length - 2].y)
-        + 2 * this.links[chain.links.length - 1].y
-        - this.links[chain.links.length - 1].py;
+    if (this.end === 'Right side free') {
+      this.links[this.links.length - 1].fy = -this.r
+          * this.r
+          * (this.links[this.links.length - 1].y
+            - this.links[this.links.length - 2].y)
+        + 2 * this.links[this.links.length - 1].y
+        - this.links[this.links.length - 1].py;
     } else {
-      chain.links[chain.links.length - 1].fy = 0;
+      this.links[this.links.length - 1].fy = 0;
     }
 
-    if (!dragging) {
-      chain.links[0].fy = chain.links[1].y
-        + ((r - 1) / (r + 1)) * (chain.links[1].fy - chain.links[0].y);
-      chain.links[0].y = chain.links[0].fy;
+    if (!this.dragging) {
+      this.links[0].fy = this.links[1].y
+        + ((this.r - 1) / (this.r + 1)) * (this.links[1].fy - this.links[0].y);
+      this.links[0].y = this.links[0].fy;
     }
-    for (let i = 1; i < this.links.length; i++) {
+    for (let i = 1; i < this.links.length; i += 1) {
       this.links[i].py = this.links[i].y;
       this.links[i].y = this.links[i].fy;
     }

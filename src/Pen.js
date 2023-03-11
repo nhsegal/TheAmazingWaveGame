@@ -1,22 +1,25 @@
 class Pen {
-  constructor(x, y, c) {
+  constructor(p, x, y, c) {
+    this.p = p;
     this.x = x;
     this.y = y;
     this.r = 10;
-    this.color = color(c);
+    this.color = p.color(c);
     this.hit = false;
   }
 
   display() {
-    fill(this.color);
-    noStroke();
+    const p = this.p;
+    p.fill(this.color);
+    p.noStroke();
     if (this.hit) {
-      rect(this.x, this.y, this.r, this.r * 5);
+      p.rect(this.x, this.y, this.r, this.r * 5);
     } else {
-      circle(this.x, this.y, this.r);
+      p.circle(this.x, this.y, this.r);
     }
   }
 
+  /*
   hitCheck() {
     if (
       this.x > chain.links[floor(this.x / chain.linkSize)].x - chain.linkSize
@@ -34,4 +37,7 @@ class Pen {
       this.hit = true;
     }
   }
+  */
 }
+
+export default Pen;
