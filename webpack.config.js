@@ -1,5 +1,6 @@
 const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
+
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
