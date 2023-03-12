@@ -7,7 +7,31 @@
   <title>The Wave Game</title>
 </head>
 <body>
-  <div id="p5container"></div>
+  <h1>The Wave Game!</h1>
   
+  <div id="p5container"></div>
+  <div id="controls" class="controls"> 
+    <button>Reset</button>
+    <div>
+      <label for="dog-names">Mode:</label>
+      <select name="dog-names" id="dog-names">
+          <option value="rigatoni">Rigatoni</option>
+        <option value="dave">Dave</option>
+        <option value="pumpernickel">Pumpernickel</option>
+        <option value="reeses">Reeses</option>
+      </select>
+    </div>
+    <div>
+      Right End: <br> <span>
+        <input type="radio" id="fixed" name="right_end" value="fixed" checked>
+        <label for="fixed">Fixed</label><br>
+        <input type="radio" id="free" name="right_end" value="free">
+        <label for="free">Free</label><br>
+      </span>
+    
+     
+    </div>
+  </div>
+ 
 </body>
 </html>

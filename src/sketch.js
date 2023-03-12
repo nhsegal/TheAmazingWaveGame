@@ -14,8 +14,6 @@ const sketch = (p) => {
   p.draw = () => {
     p.background(220);
     p.fill(0);
-    p.textSize(14);
-    p.text('Select the challenge:', 75, 20);
     p.stroke(0);
     p.line(0, p.height / 2, p.width, p.height / 2);
     p.line(0, p.height / 3, p.width, p.height / 3);
