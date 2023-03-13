@@ -13,7 +13,11 @@ class Pen {
     p.fill(this.color);
     p.noStroke();
     if (this.hit) {
-      p.rect(this.x, this.y, this.r, this.r * 5);
+      if (this.y > p.height / 2) {
+        p.rect(this.x, this.y, this.r, this.r * 5);
+      } else if (this.y < p.height / 2) {
+        p.rect(this.x, this.y - this.r * 5, this.r, this.r * 5);
+      }
     } else {
       p.circle(this.x, this.y, this.r);
     }

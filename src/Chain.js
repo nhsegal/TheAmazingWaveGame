@@ -44,8 +44,10 @@ class Chain {
 
     if (end === 'fixed') {
       p.fill(0, 0, 240);
-    } else {
+    } else if (end === 'free') {
       p.fill(0, 200, 0);
+    } else if (end === 'mirror') {
+      p.fill(200, 0, 0);
     }
 
     p.circle(
@@ -56,6 +58,7 @@ class Chain {
   }
 
   move(end) {
+    const p = this.p;
     for (let i = 1; i < this.links.length - 1; i += 1) {
       this.links[i].fy = this.r
           * this.r
@@ -70,8 +73,12 @@ class Chain {
             - this.links[this.links.length - 2].y)
         + 2 * this.links[this.links.length - 1].y
         - this.links[this.links.length - 1].py;
-    } else {
+    } else if (end === 'fixed') {
       this.links[this.links.length - 1].fy = 0;
+    } else if (end === 'mirror' && p.mouseIsPressed) {
+      this.links[this.links.length - 1].fy = this.links[0].fy;
+    } else if (end === 'antimirror' && p.mouseIsPressed) {
+      this.links[this.links.length - 1].fy = -this.links[0].fy;
     }
 
     if (!this.dragging) {

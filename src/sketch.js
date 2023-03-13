@@ -17,14 +17,12 @@ const sketch = (p) => {
     switch (item) {
       case '1':
         level = '1';
-
         pen1.x = chain.links[chain.links.length - 4].x;
         pen1.y = 10;
         pen1.color = p.color(100, 0, 200);
         pen2.x = chain.links[chain.links.length / 2].x;
         pen2.y = 60;
         pen2.color = p.color(250, 100, 0);
-
         pen1.hitCheck(chain);
         pen1.display();
         pen2.hitCheck(chain);
@@ -32,19 +30,15 @@ const sketch = (p) => {
         break;
       case '2':
         level = '2';
-
         pen1.x = chain.links[chain.links.length - 20].x;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
-
         pen2.x = chain.links[chain.links.length - 4].x;
         pen2.y = (1.5 * p.height) / 5;
         pen2.color = p.color(250, 100, 0);
-
         pen3.x = chain.links[chain.links.length - 20].x;
         pen3.y = (1.5 * p.height) / 5;
         pen3.color = p.color(100, 0, 200);
-
         pen1.hitCheck(chain);
         pen1.display();
         pen2.hitCheck(chain);
@@ -52,10 +46,8 @@ const sketch = (p) => {
         pen3.hitCheck(chain);
         pen3.display();
         break;
-
       case '3':
         level = '3';
-
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
@@ -162,6 +154,7 @@ const sketch = (p) => {
     document.querySelectorAll('select[name="level"]').forEach((option) => {
       option.addEventListener('change', (e) => {
         levelSet(e.target.value);
+        reset();
       });
     });
   };
