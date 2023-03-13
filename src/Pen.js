@@ -4,7 +4,7 @@ class Pen {
     this.x = x;
     this.y = y;
     this.r = 10;
-    this.color = p.color(c);
+    this.color = this.p.color(c);
     this.hit = false;
   }
 

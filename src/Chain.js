@@ -15,7 +15,7 @@ class Chain {
           p,
           i * this.linkSize + this.linkSize / 2,
           this.linkSize
-        ) // Link constructor(p, x,  linkSize)
+        )
       );
     }
   }
