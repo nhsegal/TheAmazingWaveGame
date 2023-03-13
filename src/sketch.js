@@ -17,8 +17,7 @@ const sketch = (p) => {
     switch (item) {
       case '1':
         level = '1';
-        p.text('Hit the purple spot with the chain', p.width / 2, 20);
-        p.text('but do not hit any orange spots.', p.width / 2, 34);
+
         pen1.x = chain.links[chain.links.length - 4].x;
         pen1.y = 10;
         pen1.color = p.color(100, 0, 200);
@@ -33,8 +32,7 @@ const sketch = (p) => {
         break;
       case '2':
         level = '2';
-        p.text('Hit the purple spots with the chain', p.width / 2, 20);
-        p.text('but do not hit any orange spots.', p.width / 2, 34);
+
         pen1.x = chain.links[chain.links.length - 20].x;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
@@ -57,8 +55,7 @@ const sketch = (p) => {
 
       case '3':
         level = '3';
-        p.text('Hit the purple spot with the chain', p.width / 2, 20);
-        p.text('but do not hit any orange spots.', p.width / 2, 34);
+
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
@@ -83,8 +80,7 @@ const sketch = (p) => {
 
       case '4':
         level = '4';
-        p.text('Hit the purple spot with the chain', p.width / 2, 20);
-        p.text('but do not hit any orange spots.', p.width / 2, 34);
+
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(250, 100, 0);
@@ -108,8 +104,7 @@ const sketch = (p) => {
         break;
       case '5':
         level = '5';
-        p.text('Hit the purple spot with the chain', p.width / 2, 20);
-        p.text('but do not hit any orange spots.', p.width / 2, 34);
+
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
