@@ -3,18 +3,38 @@ import Chain from './Chain';
 
 const sketch = (p) => {
   // Chain constructor(p, length, dx, r, dragging) {
-  const chain = new Chain(p, 800, 1, 1, false);
+  let chain = new Chain(p, 800, 1, 1, false);
   let dragging = false;
   let end = 'fixed';
+
+  const reset = () => {
+    // dragging = false;
+    // console.log(chain.links[1]);
+    chain.links.forEach((val, i, arr) => {
+      arr[i].y = 0;
+      arr[i].py = 0;
+      arr[i].fy = 0;
+    });
+
+    // chain.display(end);
+    // pen1.hit = false;
+    // pen2.hit = false;
+    // pen3.hit = false;
+    // pen4.hit = false;
+  };
 
   p.setup = ()=> {
     p.createCanvas(800, 300);
     p.textAlign(p.CENTER);
+
+    // Event Listeners
     document.querySelectorAll('input[name="right_end"]').forEach((option) => {
       option.addEventListener('change', (event)=> {
         end = event.target.value;
       });
     });
+
+    document.querySelector('#resetButton').addEventListener('click', reset);
   };
 
   p.draw = () => {
@@ -46,17 +66,7 @@ const sketch = (p) => {
     dragging = false;
   };
 };
-
 /*
-
-function reset() {
-  dragging = false;
-  chain = new Chain(width);
-  pen1.hit = false;
-  pen2.hit = false;
-  pen3.hit = false;
-  pen4.hit = false;
-}
 function levelSet(item) {
   switch (item) {
     case '1':

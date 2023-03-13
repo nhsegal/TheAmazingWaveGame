@@ -7,7 +7,6 @@ class Chain {
     this.linkSize = 5 * dx;
     this.links = [];
     this.r = r;
-
     this.dragging = dragging;
 
     for (let i = 0; i < this.length / this.linkSize; i += 1) {
