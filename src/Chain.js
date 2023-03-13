@@ -1,13 +1,13 @@
 import Link from './link';
 
 class Chain {
-  constructor(p, length, dx, r, end, dragging) {
+  constructor(p, length, dx, r, dragging) {
     this.p = p;
     this.length = length;
     this.linkSize = 5 * dx;
     this.links = [];
     this.r = r;
-    this.end = end;
+
     this.dragging = dragging;
 
     for (let i = 0; i < this.length / this.linkSize; i += 1) {
@@ -21,7 +21,7 @@ class Chain {
     }
   }
 
-  display() {
+  display(end) {
     const p = this.p;
     for (let i = 0; i < this.links.length - 1; i += 1) {
       if (i === 0) {
@@ -43,7 +43,7 @@ class Chain {
       }
     }
 
-    if (this.end === 'Right side fixed') {
+    if (end === 'fixed') {
       p.fill(0, 0, 240);
     } else {
       p.fill(0, 200, 0);
@@ -56,7 +56,7 @@ class Chain {
     );
   }
 
-  move() {
+  move(end) {
     for (let i = 1; i < this.links.length - 1; i += 1) {
       this.links[i].fy = this.r
           * this.r
@@ -64,7 +64,7 @@ class Chain {
         + 2 * this.links[i].y
         - this.links[i].py;
     }
-    if (this.end === 'Right side free') {
+    if (end === 'free') {
       this.links[this.links.length - 1].fy = -this.r
           * this.r
           * (this.links[this.links.length - 1].y

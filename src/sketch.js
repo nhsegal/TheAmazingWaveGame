@@ -2,13 +2,19 @@ import Chain from './Chain';
 // import Pen from './Pen';
 
 const sketch = (p) => {
-  // Chain constructor(p, length, dx, r, end, dragging) {
-  const chain = new Chain(p, 800, 1, 1, 'Right side free', false);
+  // Chain constructor(p, length, dx, r, dragging) {
+  const chain = new Chain(p, 800, 1, 1, false);
   let dragging = false;
+  let end = 'fixed';
 
   p.setup = ()=> {
     p.createCanvas(800, 300);
     p.textAlign(p.CENTER);
+    document.querySelectorAll('input[name="right_end"]').forEach((option) => {
+      option.addEventListener('change', (event)=> {
+        end = event.target.value;
+      });
+    });
   };
 
   p.draw = () => {
@@ -24,8 +30,8 @@ const sketch = (p) => {
     }
     chain.links[0].py = chain.links[0].y;
     chain.links[0].y = chain.links[0].fy;
-    chain.move();
-    chain.display();
+    chain.move(end);
+    chain.display(end);
   };
 
   p.mousePressed = () =>{
