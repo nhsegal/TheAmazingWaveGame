@@ -2,8 +2,11 @@ import Chain from './Chain';
 import Pen from './Pen';
 
 const sketch = (p) => {
-  // Chain constructor(p, length, dx, r) {
-  const chain = new Chain(p, 800, 1, 1);
+  // Chain constructor(p, length, dx, r)
+  const width = 900;
+  const dt = 5;
+  const dx = 5;
+  const chain = new Chain(p, width, dx, dt);
   let dragging = false;
   let end = 'fixed';
   let level = 0;
@@ -17,10 +20,10 @@ const sketch = (p) => {
     switch (item) {
       case '1':
         level = '1';
-        pen1.x = chain.links[chain.links.length - 4].x;
+        pen1.x = chain.links[Math.floor(chain.links.length - 4)].x;
         pen1.y = 10;
         pen1.color = p.color(100, 0, 200);
-        pen2.x = chain.links[chain.links.length / 2].x;
+        pen2.x = chain.links[Math.floor(chain.links.length / 2)].x;
         pen2.y = 60;
         pen2.color = p.color(250, 100, 0);
         pen1.hitCheck(chain);
@@ -30,13 +33,13 @@ const sketch = (p) => {
         break;
       case '2':
         level = '2';
-        pen1.x = chain.links[chain.links.length - 20].x;
+        pen1.x = chain.links[Math.floor(chain.links.length - 20)].x;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
-        pen2.x = chain.links[chain.links.length - 4].x;
+        pen2.x = chain.links[Math.floor(chain.links.length - 4)].x;
         pen2.y = (1.5 * p.height) / 5;
         pen2.color = p.color(250, 100, 0);
-        pen3.x = chain.links[chain.links.length - 20].x;
+        pen3.x = chain.links[Math.floor(chain.links.length - 20)].x;
         pen3.y = (1.5 * p.height) / 5;
         pen3.color = p.color(100, 0, 200);
         pen1.hitCheck(chain);
@@ -69,10 +72,8 @@ const sketch = (p) => {
         pen4.hitCheck(chain);
         pen4.display();
         break;
-
       case '4':
         level = '4';
-
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(250, 100, 0);
@@ -96,7 +97,6 @@ const sketch = (p) => {
         break;
       case '5':
         level = '5';
-
         pen1.x = 402;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
@@ -139,7 +139,7 @@ const sketch = (p) => {
   };
 
   p.setup = ()=> {
-    p.createCanvas(800, 300);
+    p.createCanvas(width, 300);
     p.textAlign(p.CENTER);
 
     // Event Listeners

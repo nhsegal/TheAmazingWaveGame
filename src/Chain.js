@@ -1,21 +1,19 @@
 import Link from './link';
 
 class Chain {
-  constructor(p, length, dx, r) {
+  constructor(p, length, dx, dt) {
     this.p = p;
     this.length = length;
-    this.linkSize = 5 * dx;
+    this.linkSize = dx;
     this.links = [];
-    this.r = r;
+    this.dt = dt;
 
     for (let i = 0; i < this.length / this.linkSize; i += 1) {
-      this.links.push(
-        new Link(
-          p,
-          i * this.linkSize + this.linkSize / 2,
-          this.linkSize
-        )
-      );
+      this.links.push(new Link(
+        p,
+        i * this.linkSize + this.linkSize / 2,
+        dx
+      ));
     }
   }
 
@@ -33,13 +31,7 @@ class Chain {
           this.links[0].linkSize * 3
         );
       } else {
-        p.fill(0);
-        p.circle(
-          this.links[i].x,
-          (this.links[i + 1].y + this.links[i].y + this.links[i + 1].y) / 3
-            + p.height / 2,
-          this.linkSize
-        );
+        this.links[i].display();
       }
     }
 
@@ -61,16 +53,13 @@ class Chain {
   move(end, dragging) {
     const p = this.p;
     for (let i = 1; i < this.links.length - 1; i += 1) {
-      this.links[i].fy = this.r
-          * this.r
-          * (this.links[i - 1].y - 2 * this.links[i].y + this.links[i + 1].y)
+      this.links[i].fy = ((this.dt / this.linkSize) ** 2)
+      * (this.links[i - 1].y - 2 * this.links[i].y + this.links[i + 1].y)
         + 2 * this.links[i].y
         - this.links[i].py;
     }
     if (end === 'free') {
-      this.links[this.links.length - 1].fy = -this.r
-          * this.r
-          * (this.links[this.links.length - 1].y
+      this.links[this.links.length - 1].fy = -(this.links[this.links.length - 1].y
             - this.links[this.links.length - 2].y)
         + 2 * this.links[this.links.length - 1].y
         - this.links[this.links.length - 1].py;
@@ -78,13 +67,18 @@ class Chain {
       this.links[this.links.length - 1].fy = 0;
     } else if (end === 'mirror' && p.mouseIsPressed) {
       this.links[this.links.length - 1].fy = this.links[0].fy;
+    } else if (end === 'mirror' && !p.mouseIsPressed) {
+      this.links[this.links.length - 1].fy = this.links[this.links.length - 2].y;
+      this.links[this.links.length - 1].y = this.links[this.links.length - 1].fy;
     } else if (end === 'antimirror' && p.mouseIsPressed) {
       this.links[this.links.length - 1].fy = -this.links[0].fy;
+    } else if (end === 'antimirror' && !p.mouseIsPressed) {
+      this.links[this.links.length - 1].fy = this.links[this.links.length - 2].y;
+      this.links[this.links.length - 1].y = this.links[this.links.length - 1].fy;
     }
 
     if (!dragging) {
-      this.links[0].fy = this.links[1].y
-        + ((this.r - 1) / (this.r + 1)) * (this.links[1].fy - this.links[0].y);
+      this.links[0].fy = this.links[1].y;
       this.links[0].y = this.links[0].fy;
     }
     for (let i = 1; i < this.links.length; i += 1) {

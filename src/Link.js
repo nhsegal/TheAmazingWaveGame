@@ -10,8 +10,9 @@ class Link {
 
   display() {
     const p = this.p;
+    p.fill(0);
     p.noStroke();
-    p.circle(this.x, this.y, this.linkSize);
+    p.circle(this.x, this.y + p.height / 2, this.linkSize);
   }
 }
 

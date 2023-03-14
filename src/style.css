@@ -22,6 +22,7 @@ button {
   padding: 5px 10px 5px 10px; 
   text-decoration: none;
   margin: 0 0 1rem 0;
+  height: 3rem;
 }
 
 canvas{
@@ -30,7 +31,7 @@ canvas{
 }
 
 .controls {
-  width: 800px;
+  width: 900px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,5 +42,11 @@ canvas{
 }
 
 .top-msg {
+  text-align: center;
+}
+
+select {
+  width: 3rem;
+  height: 1.5rem;
   text-align: center;
 }
