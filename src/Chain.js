@@ -1,13 +1,12 @@
 import Link from './link';
 
 class Chain {
-  constructor(p, length, dx, r, dragging) {
+  constructor(p, length, dx, r) {
     this.p = p;
     this.length = length;
     this.linkSize = 5 * dx;
     this.links = [];
     this.r = r;
-    this.dragging = dragging;
 
     for (let i = 0; i < this.length / this.linkSize; i += 1) {
       this.links.push(
@@ -20,11 +19,13 @@ class Chain {
     }
   }
 
-  display(end) {
+  display(end, dragging) {
     const p = this.p;
     for (let i = 0; i < this.links.length - 1; i += 1) {
       if (i === 0) {
-        p.fill(250, 0, 0);
+        if (dragging) {
+          p.fill(250, 0, 0);
+        } else { p.fill(200, 0, 0); }
         p.noStroke();
         p.circle(
           this.links[0].x + this.links[0].linkSize,
@@ -57,7 +58,7 @@ class Chain {
     );
   }
 
-  move(end) {
+  move(end, dragging) {
     const p = this.p;
     for (let i = 1; i < this.links.length - 1; i += 1) {
       this.links[i].fy = this.r
@@ -81,7 +82,7 @@ class Chain {
       this.links[this.links.length - 1].fy = -this.links[0].fy;
     }
 
-    if (!this.dragging) {
+    if (!dragging) {
       this.links[0].fy = this.links[1].y
         + ((this.r - 1) / (this.r + 1)) * (this.links[1].fy - this.links[0].y);
       this.links[0].y = this.links[0].fy;

@@ -2,8 +2,8 @@ import Chain from './Chain';
 import Pen from './Pen';
 
 const sketch = (p) => {
-  // Chain constructor(p, length, dx, r, dragging) {
-  const chain = new Chain(p, 800, 1, 1, false);
+  // Chain constructor(p, length, dx, r) {
+  const chain = new Chain(p, 800, 1, 1);
   let dragging = false;
   let end = 'fixed';
   let level = 0;
@@ -174,8 +174,8 @@ const sketch = (p) => {
     }
     chain.links[0].py = chain.links[0].y;
     chain.links[0].y = chain.links[0].fy;
-    chain.move(end);
-    chain.display(end);
+    chain.move(end, dragging);
+    chain.display(end, dragging);
 
     let item = level;
     p.noStroke();
@@ -194,7 +194,5 @@ const sketch = (p) => {
     dragging = false;
   };
 };
-
-// const p5Sketch = new p5(sketch, containerElement);
 
 export default sketch;
