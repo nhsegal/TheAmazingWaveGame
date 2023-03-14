@@ -1,0 +1,17 @@
+{
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false
+  },
+  "extends": [
+    "airbnb-base/legacy"
+  ],
+  "rules": {
+    "no-console": "off",
+    "import/no-extraneous-dependencies": "off",
+    "no-param-reassign": [2, { "props": false }]
+  },
+  "env": {
+    "browser": true
+  }
+}
