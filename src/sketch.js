@@ -15,6 +15,8 @@ const sketch = (p) => {
   const pen2 = new Pen(p, 0, 250, p.color(0));
   const pen3 = new Pen(p, 0, 250, p.color(0));
   const pen4 = new Pen(p, 0, 250, p.color(0));
+  const pen5 = new Pen(p, 0, 250, p.color(0));
+  const pen6 = new Pen(p, 0, 250, p.color(0));
 
   const levelSet = (item) => {
     switch (item) {
@@ -51,67 +53,22 @@ const sketch = (p) => {
         break;
       case '3':
         level = '3';
-        pen1.x = 402;
+        pen1.x = p.width / 2;
         pen1.y = (3.5 * p.height) / 5;
         pen1.color = p.color(100, 0, 200);
-        pen2.x = 292;
+        pen2.x = (p.width / 2) - 120;
         pen2.y = (3.5 * p.height) / 5;
         pen2.color = p.color(250, 100, 0);
-        pen3.x = 512;
+        pen3.x = (p.width / 2) + 120;
         pen3.y = (3.5 * p.height) / 5;
         pen3.color = p.color(250, 100, 0);
-        pen4.x = 792;
-        pen4.y = (3.5 * p.height) / 5;
-        pen4.color = p.color(250, 100, 0);
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        pen4.hitCheck(chain);
-        pen4.display();
-        break;
-      case '4':
-        level = '4';
-        pen1.x = 402;
-        pen1.y = (3.5 * p.height) / 5;
-        pen1.color = p.color(250, 100, 0);
-        pen2.x = 292;
-        pen2.y = (1.5 * p.height) / 5;
-        pen2.color = p.color(100, 0, 200);
-        pen3.x = 512;
-        pen3.y = (3.5 * p.height) / 5;
-        pen3.color = p.color(100, 0, 200);
-        pen4.x = 402;
-        pen4.y = (1.5 * p.height) / 5;
-        pen4.color = p.color(250, 100, 0);
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        pen4.hitCheck(chain);
-        pen4.display();
-        break;
-      case '5':
-        level = '5';
-        pen1.x = 402;
-        pen1.y = (3.5 * p.height) / 5;
-        pen1.color = p.color(100, 0, 200);
-        pen2.x = 6;
-        pen2.y = (2 * p.height) / 5;
-        pen2.color = p.color(250, 100, 0);
-
-        pen3.x = 402;
-        pen3.y = (1.5 * p.height) / 5;
-        pen3.color = p.color(100, 0, 200);
-
-        pen4.x = 6;
+        pen4.x = p.width - 10;
         pen4.y = (3 * p.height) / 5;
         pen4.color = p.color(250, 100, 0);
 
+        pen5.x = p.width - 10;
+        pen5.y = (2 * p.height) / 5;
+        pen5.color = p.color(250, 100, 0);
         pen1.hitCheck(chain);
         pen1.display();
         pen2.hitCheck(chain);
@@ -120,6 +77,86 @@ const sketch = (p) => {
         pen3.display();
         pen4.hitCheck(chain);
         pen4.display();
+        pen5.hitCheck(chain);
+        pen5.display();
+        break;
+      case '4':
+        level = '4';
+        pen1.x = p.width / 2;
+        pen1.y = (3.5 * p.height) / 5;
+        pen1.color = p.color(250, 100, 0);
+
+        pen2.x = p.width / 2;
+        pen2.y = (1.5 * p.height) / 5;
+        pen2.color = p.color(250, 100, 0);
+
+        pen3.x = p.width / 2 - 80;
+        pen3.y = (1.5 * p.height) / 5;
+        pen3.color = p.color(100, 0, 200);
+
+        pen4.x = p.width / 2 - 80;
+        pen4.y = (3.5 * p.height) / 5;
+        pen4.color = p.color(100, 0, 200);
+
+        pen5.x = p.width / 2 + 80;
+        pen5.y = (1.5 * p.height) / 5;
+        pen5.color = p.color(100, 0, 200);
+
+        pen6.x = p.width / 2 + 80;
+        pen6.y = (3.5 * p.height) / 5;
+        pen6.color = p.color(100, 0, 200);
+
+        pen1.hitCheck(chain);
+        pen1.display();
+        pen2.hitCheck(chain);
+        pen2.display();
+        pen3.hitCheck(chain);
+        pen3.display();
+        pen4.hitCheck(chain);
+        pen4.display();
+        pen5.hitCheck(chain);
+        pen5.display();
+        pen6.hitCheck(chain);
+        pen6.display();
+        break;
+      case '5':
+        level = '5';
+        pen1.x = 1 * (p.width / 4);
+        pen1.y = (4 * p.height) / 5;
+        pen1.color = p.color(100, 0, 200);
+
+        pen3.x = 1 * (p.width / 4);
+        pen3.y = (1 * p.height) / 5;
+        pen3.color = p.color(100, 0, 200);
+
+        pen5.x = 3 * (p.width / 4);
+        pen5.y = (4 * p.height) / 5;
+        pen5.color = p.color(100, 0, 200);
+
+        pen6.x = 3 * (p.width / 4);
+        pen6.y = (1 * p.height) / 5;
+        pen6.color = p.color(100, 0, 200);
+
+        pen2.x = 6;
+        pen2.y = (2 * p.height) / 6;
+        pen2.color = p.color(250, 100, 0);
+
+        pen4.x = 6;
+        pen4.y = (4 * p.height) / 6;
+        pen4.color = p.color(250, 100, 0);
+
+        pen1.hitCheck(chain);
+        pen1.display();
+        pen2.hitCheck(chain);
+        pen2.display();
+        pen3.hitCheck(chain);
+        pen3.display();
+        pen4.hitCheck(chain);
+        pen4.display();
+        pen5.hitCheck(chain);
+        pen5.display();
+        pen6.hitCheck(chain);
+        pen6.display();
         break;
       default:
     }
@@ -136,6 +173,8 @@ const sketch = (p) => {
     pen2.hit = false;
     pen3.hit = false;
     pen4.hit = false;
+    pen5.hit = false;
+    pen6.hit = false;
   };
 
   p.setup = ()=> {
