@@ -163,7 +163,6 @@ const sketch = (p) => {
     document.querySelectorAll('select[name="level"]').forEach((option) => {
       option.addEventListener('change', (e) => {
         level = e.target.value;
-
         levelSet();
         reset();
       });
@@ -186,7 +185,6 @@ const sketch = (p) => {
     chain.links[0].py = chain.links[0].y;
     chain.links[0].y = chain.links[0].fy;
     chain.move(end, dragging);
-    chain.display(end, dragging);
 
     p.noStroke();
 
@@ -198,6 +196,7 @@ const sketch = (p) => {
         pen.display();
       });
     }
+    chain.display(end, dragging);
   };
 
   p.mousePressed = () => {
