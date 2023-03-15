@@ -11,154 +11,121 @@ const sketch = (p) => {
   let end = 'fixed';
   let level = 0;
 
-  const pen1 = new Pen(p, 0, 250, p.color(0));
-  const pen2 = new Pen(p, 0, 250, p.color(0));
-  const pen3 = new Pen(p, 0, 250, p.color(0));
-  const pen4 = new Pen(p, 0, 250, p.color(0));
-  const pen5 = new Pen(p, 0, 250, p.color(0));
-  const pen6 = new Pen(p, 0, 250, p.color(0));
+  const pens = [];
 
-  const levelSet = (item) => {
-    switch (item) {
+  const levelSet = () => {
+    switch (level) {
       case '1':
-        level = '1';
-        pen1.x = chain.links[Math.floor(chain.links.length - 4)].x;
-        pen1.y = 10;
-        pen1.color = p.color(100, 0, 200);
-        pen2.x = chain.links[Math.floor(chain.links.length / 2)].x;
-        pen2.y = 60;
-        pen2.color = p.color(250, 100, 0);
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        break;
+        pens.length = 0;
+        for (let i = 0; i < 2; i += 1) {
+          pens.push(
+            new Pen(p, 0, 250, p.color(100 + 250 * i, 100 * i, 200 - 200 * i))
+          );
+        }
+
+        pens[0].x = p.width - 20;
+        pens[0].y = 40;
+        pens[1].x = p.width / 2;
+        pens[1].y = p.height / 4;
+        return pens;
+
       case '2':
-        level = '2';
-        pen1.x = chain.links[Math.floor(chain.links.length - 20)].x;
-        pen1.y = (3.5 * p.height) / 5;
-        pen1.color = p.color(100, 0, 200);
-        pen2.x = chain.links[Math.floor(chain.links.length - 4)].x;
-        pen2.y = (1.5 * p.height) / 5;
-        pen2.color = p.color(250, 100, 0);
-        pen3.x = chain.links[Math.floor(chain.links.length - 20)].x;
-        pen3.y = (1.5 * p.height) / 5;
-        pen3.color = p.color(100, 0, 200);
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        break;
+        pens.length = 0;
+        for (let i = 0; i < 3; i += 1) {
+          pens.push(new Pen(p, 0, 250, p.color(0)));
+        }
+
+        pens[0].x = p.width - 100;
+        pens[0].y = (3.5 * p.height) / 5;
+        pens[0].color = p.color(100, 0, 200);
+        pens[1].x = p.width - 30;
+        pens[1].y = (1.5 * p.height) / 5;
+        pens[1].color = p.color(250, 100, 0);
+        pens[2].x = p.width - 100;
+        pens[2].y = (1.5 * p.height) / 5;
+        pens[2].color = p.color(100, 0, 200);
+
+        return pens;
       case '3':
-        level = '3';
-        pen1.x = p.width / 2;
-        pen1.y = (3.5 * p.height) / 5;
-        pen1.color = p.color(100, 0, 200);
-        pen2.x = (p.width / 2) - 120;
-        pen2.y = (3.5 * p.height) / 5;
-        pen2.color = p.color(250, 100, 0);
-        pen3.x = (p.width / 2) + 120;
-        pen3.y = (3.5 * p.height) / 5;
-        pen3.color = p.color(250, 100, 0);
-        pen4.x = p.width - 10;
-        pen4.y = (3 * p.height) / 5;
-        pen4.color = p.color(250, 100, 0);
+        pens.length = 0;
+        for (let i = 0; i < 5; i += 1) {
+          pens.push(new Pen(p, 0, 250, p.color(0)));
+        }
 
-        pen5.x = p.width - 10;
-        pen5.y = (2 * p.height) / 5;
-        pen5.color = p.color(250, 100, 0);
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        pen4.hitCheck(chain);
-        pen4.display();
-        pen5.hitCheck(chain);
-        pen5.display();
-        break;
+        pens[0].x = p.width / 2;
+        pens[0].y = (3.5 * p.height) / 5;
+        pens[0].color = p.color(100, 0, 200);
+        pens[1].x = p.width / 2 - 120;
+        pens[1].y = (3.5 * p.height) / 5;
+        pens[1].color = p.color(250, 100, 0);
+        pens[2].x = p.width / 2 + 120;
+        pens[2].y = (3.5 * p.height) / 5;
+        pens[2].color = p.color(250, 100, 0);
+        pens[3].x = p.width - 10;
+        pens[3].y = (3 * p.height) / 5;
+        pens[3].color = p.color(250, 100, 0);
+        pens[4].x = p.width - 10;
+        pens[4].y = (2 * p.height) / 5;
+        pens[4].color = p.color(250, 100, 0);
+
+        return pens;
       case '4':
-        level = '4';
-        pen1.x = p.width / 2;
-        pen1.y = (3.5 * p.height) / 5;
-        pen1.color = p.color(250, 100, 0);
+        pens.length = 0;
+        for (let i = 0; i < 6; i += 1) {
+          pens.push(new Pen(p, 0, 250, p.color(0)));
+        }
 
-        pen2.x = p.width / 2;
-        pen2.y = (1.5 * p.height) / 5;
-        pen2.color = p.color(250, 100, 0);
-
-        pen3.x = p.width / 2 - 80;
-        pen3.y = (1.5 * p.height) / 5;
-        pen3.color = p.color(100, 0, 200);
-
-        pen4.x = p.width / 2 - 80;
-        pen4.y = (3.5 * p.height) / 5;
-        pen4.color = p.color(100, 0, 200);
-
-        pen5.x = p.width / 2 + 80;
-        pen5.y = (1.5 * p.height) / 5;
-        pen5.color = p.color(100, 0, 200);
-
-        pen6.x = p.width / 2 + 80;
-        pen6.y = (3.5 * p.height) / 5;
-        pen6.color = p.color(100, 0, 200);
-
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        pen4.hitCheck(chain);
-        pen4.display();
-        pen5.hitCheck(chain);
-        pen5.display();
-        pen6.hitCheck(chain);
-        pen6.display();
-        break;
+        pens[0].x = p.width / 2 + 80;
+        pens[0].y = (3.5 * p.height) / 5;
+        pens[0].color = p.color(100, 0, 200);
+        pens[1].x = p.width / 2;
+        pens[1].y = (3.5 * p.height) / 5;
+        pens[1].color = p.color(250, 100, 0);
+        pens[2].x = p.width / 2;
+        pens[2].y = (1.5 * p.height) / 5;
+        pens[2].color = p.color(250, 100, 0);
+        pens[3].x = p.width / 2 - 80;
+        pens[3].y = (1.5 * p.height) / 5;
+        pens[3].color = p.color(100, 0, 200);
+        pens[4].x = p.width / 2 - 80;
+        pens[4].y = (3.5 * p.height) / 5;
+        pens[4].color = p.color(100, 0, 200);
+        pens[5].x = p.width / 2 + 80;
+        pens[5].y = (1.5 * p.height) / 5;
+        pens[5].color = p.color(100, 0, 200);
+        return pens;
       case '5':
-        level = '5';
-        pen1.x = 1 * (p.width / 4);
-        pen1.y = (4 * p.height) / 5;
-        pen1.color = p.color(100, 0, 200);
+        pens.length = 0;
+        for (let i = 0; i < 6; i += 1) {
+          pens.push(new Pen(p, 0, 250, p.color(0)));
+        }
+        pens[0].x = 3 * (p.width / 4);
+        pens[0].y = (1 * p.height) / 5;
+        pens[0].color = p.color(100, 0, 200);
 
-        pen3.x = 1 * (p.width / 4);
-        pen3.y = (1 * p.height) / 5;
-        pen3.color = p.color(100, 0, 200);
+        pens[1].x = 1 * (p.width / 4);
+        pens[1].y = (4 * p.height) / 5;
+        pens[1].color = p.color(100, 0, 200);
 
-        pen5.x = 3 * (p.width / 4);
-        pen5.y = (4 * p.height) / 5;
-        pen5.color = p.color(100, 0, 200);
+        pens[2].x = 1 * (p.width / 4);
+        pens[2].y = (1 * p.height) / 5;
+        pens[2].color = p.color(100, 0, 200);
 
-        pen6.x = 3 * (p.width / 4);
-        pen6.y = (1 * p.height) / 5;
-        pen6.color = p.color(100, 0, 200);
+        pens[3].x = 3 * (p.width / 4);
+        pens[3].y = (4 * p.height) / 5;
+        pens[3].color = p.color(100, 0, 200);
 
-        pen2.x = 6;
-        pen2.y = (2 * p.height) / 6;
-        pen2.color = p.color(250, 100, 0);
+        pens[4].x = 6;
+        pens[4].y = (2 * p.height) / 6;
+        pens[4].color = p.color(250, 100, 0);
 
-        pen4.x = 6;
-        pen4.y = (4 * p.height) / 6;
-        pen4.color = p.color(250, 100, 0);
+        pens[5].x = 6;
+        pens[5].y = (4 * p.height) / 6;
+        pens[5].color = p.color(250, 100, 0);
 
-        pen1.hitCheck(chain);
-        pen1.display();
-        pen2.hitCheck(chain);
-        pen2.display();
-        pen3.hitCheck(chain);
-        pen3.display();
-        pen4.hitCheck(chain);
-        pen4.display();
-        pen5.hitCheck(chain);
-        pen5.display();
-        pen6.hitCheck(chain);
-        pen6.display();
-        break;
+        return pens;
       default:
+        return pens;
     }
   };
 
@@ -168,22 +135,20 @@ const sketch = (p) => {
       arr[i].py = 0;
       arr[i].fy = 0;
     });
-
-    pen1.hit = false;
-    pen2.hit = false;
-    pen3.hit = false;
-    pen4.hit = false;
-    pen5.hit = false;
-    pen6.hit = false;
+    if (pens.length) {
+      pens.forEach((pen)=>{
+        pen.hit = false;
+      });
+    }
   };
 
-  p.setup = ()=> {
+  p.setup = () => {
     p.createCanvas(width, 300);
     p.textAlign(p.CENTER);
 
     // Event Listeners
     document.querySelectorAll('input[name="right_end"]').forEach((option) => {
-      option.addEventListener('change', (event)=> {
+      option.addEventListener('change', (event) => {
         end = event.target.value;
       });
     });
@@ -192,7 +157,9 @@ const sketch = (p) => {
 
     document.querySelectorAll('select[name="level"]').forEach((option) => {
       option.addEventListener('change', (e) => {
-        levelSet(e.target.value);
+        level = e.target.value;
+        console.log(level);
+        levelSet();
         reset();
       });
     });
@@ -216,20 +183,31 @@ const sketch = (p) => {
     chain.move(end, dragging);
     chain.display(end, dragging);
 
-    let item = level;
+    // let item = level;
     p.noStroke();
-    levelSet(item);
+    // levelSet(item);
+    if (pens.length) {
+      pens.forEach((pen) => {
+        pen.hitCheck(chain);
+        pen.display();
+      });
+    }
   };
 
-  p.mousePressed = () =>{
+  p.mousePressed = () => {
     if (
-      p.dist(chain.links[0].x, chain.links[0].y + p.height / 2, p.mouseX, p.mouseY)
+      p.dist(
+        chain.links[0].x,
+        chain.links[0].y + p.height / 2,
+        p.mouseX,
+        p.mouseY
+      )
       < (3 * chain.linkSize) / 2
     ) {
       dragging = true;
     }
   };
-  p.mouseReleased = () =>{
+  p.mouseReleased = () => {
     dragging = false;
   };
 };
