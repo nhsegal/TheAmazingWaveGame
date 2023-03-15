@@ -10,7 +10,7 @@ const sketch = (p) => {
   let dragging = false;
   let end = 'fixed';
   let level = 0;
-
+  let mySound;
   const pens = [];
 
   const levelSet = () => {
@@ -142,6 +142,11 @@ const sketch = (p) => {
     }
   };
 
+  p.preload = () => {
+    p.soundFormats('mp3', 'wav');
+    mySound = p.loadSound('cowbell.wav');
+  };
+
   p.setup = () => {
     p.createCanvas(width, 300);
     p.textAlign(p.CENTER);
@@ -158,7 +163,7 @@ const sketch = (p) => {
     document.querySelectorAll('select[name="level"]').forEach((option) => {
       option.addEventListener('change', (e) => {
         level = e.target.value;
-        console.log(level);
+
         levelSet();
         reset();
       });
@@ -183,12 +188,13 @@ const sketch = (p) => {
     chain.move(end, dragging);
     chain.display(end, dragging);
 
-    // let item = level;
     p.noStroke();
-    // levelSet(item);
+
     if (pens.length) {
       pens.forEach((pen) => {
-        pen.hitCheck(chain);
+        if (pen.hitCheck(chain)) {
+          mySound.play();
+        }
         pen.display();
       });
     }

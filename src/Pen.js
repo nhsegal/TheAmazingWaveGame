@@ -26,7 +26,6 @@ class Pen {
   hitCheck(chain) {
     const p = this.p;
     if (
-
       (this.x > chain.links[Math.floor(this.x / chain.linkSize)].x - chain.linkSize)
       && (this.x < chain.links[Math.floor(this.x / chain.linkSize)].x + chain.linkSize)
 
@@ -37,10 +36,13 @@ class Pen {
       || ((this.y < chain.links[Math.floor(this.x / chain.linkSize)].y + chain.linkSize
           + p.height / 2
       && (this.y > p.height / 2))))
+      && this.hit === false
 
     ) {
       this.hit = true;
+      return true;
     }
+    return false;
   }
 }
 

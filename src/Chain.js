@@ -1,4 +1,4 @@
-import Link from './link';
+import Link from './Link';
 
 class Chain {
   constructor(p, length, dx, dt) {
