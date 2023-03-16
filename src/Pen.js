@@ -1,3 +1,9 @@
+import hitSound from './cowbell.wav';
+
+// const soundEffect = new Audio(hitSound);
+
+// soundEffect.load();
+
 class Pen {
   constructor(p, x, y, c) {
     this.p = p;
@@ -6,6 +12,8 @@ class Pen {
     this.r = 10;
     this.color = this.p.color(c);
     this.hit = false;
+    this.effect = new Audio(hitSound);
+    this.effect.load();
   }
 
   display() {
@@ -26,7 +34,12 @@ class Pen {
   hitCheck(chain) {
     const p = this.p;
     if (
+<<<<<<< HEAD
       (this.x > chain.links[Math.floor(this.x / chain.linkSize)].x - chain.linkSize)
+=======
+
+      ((this.x > chain.links[Math.floor(this.x / chain.linkSize)].x - chain.linkSize)
+>>>>>>> main
       && (this.x < chain.links[Math.floor(this.x / chain.linkSize)].x + chain.linkSize)
 
       && (((this.y > chain.links[Math.floor(this.x / chain.linkSize)].y - chain.linkSize
@@ -35,12 +48,20 @@ class Pen {
 
       || ((this.y < chain.links[Math.floor(this.x / chain.linkSize)].y + chain.linkSize
           + p.height / 2
+<<<<<<< HEAD
       && (this.y > p.height / 2))))
+=======
+      && (this.y > p.height / 2)))))
+>>>>>>> main
       && this.hit === false
 
     ) {
       this.hit = true;
+<<<<<<< HEAD
       return true;
+=======
+      this.effect.play();
+>>>>>>> main
     }
     return false;
   }

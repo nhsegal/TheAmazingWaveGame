@@ -3,7 +3,7 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: {
     index: {
       import: path.resolve(__dirname, 'src/index.js'),
@@ -49,6 +49,10 @@ module.exports = {
       }, 
       {
         test: /\.(mp3|wav)$/i,
+        type: "asset/resource",
+      },
+      {
+        test: /\.wav$/,
         type: "asset/resource",
       },
      
