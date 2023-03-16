@@ -6,14 +6,15 @@ module.exports = {
   mode: 'production',
   entry: {
     index: {
-      import: path.resolve(__dirname, 'src/index.js'),
+      import: './src/index.js',
       dependOn: 'shared',
     },
     sketch: {
-      import: path.resolve(__dirname, 'src/Link.js'),
+      import: './src/sketch.js',
       dependOn: 'shared',
     },
-    shared: 'p5',
+    shared: './src/p5/p5.min.js',
+
   },
 
   output: {
@@ -22,8 +23,7 @@ module.exports = {
     clean: true,
   },
   optimization: {
-    splitChunks: {
-      chunks: 'all'}
+    runtimeChunk: 'single',
   },
   devtool: "source-map",
   devServer: {
