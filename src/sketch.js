@@ -17,19 +17,45 @@ const sketch = (p) => {
     switch (level) {
       case '1':
         pens.length = 0;
-        for (let i = 0; i < 2; i += 1) {
+        for (let i = 0; i < 4; i += 1) {
           pens.push(
-            new Pen(p, 0, 250, p.color(100 + 250 * i, 100 * i, 200 - 200 * i))
+            new Pen(p, 0, 250, p.color(0))
           );
         }
-
-        pens[0].x = p.width - 20;
-        pens[0].y = 40;
+        pens[0].color = p.color(250, 100, 0);
+        pens[0].x = p.width - 30;
+        pens[0].y = p.height / 4;
         pens[1].x = p.width / 2;
         pens[1].y = p.height / 4;
+        pens[1].color = p.color(100, 0, 200);
+        pens[2].x = p.width * (3 / 4);
+        pens[2].y = p.height / 4;
+        pens[2].color = p.color(100, 0, 200);
+        pens[3].x = p.width * (1 / 4);
+        pens[3].y = p.height / 4;
+        pens[3].color = p.color(100, 0, 200);
         return pens;
-
       case '2':
+        pens.length = 0;
+        for (let i = 0; i < 4; i += 1) {
+          pens.push(
+            new Pen(p, 0, 250, p.color(0))
+          );
+        }
+        pens[0].color = p.color(100, 0, 200);
+        pens[0].x = p.width - 30;
+        pens[0].y = p.height / 4;
+        pens[1].x = p.width / 2;
+        pens[1].y = p.height / 4;
+        pens[1].color = p.color(250, 100, 0);
+        pens[2].x = p.width * (3 / 4);
+        pens[2].y = p.height / 4;
+        pens[2].color = p.color(250, 100, 0);
+        pens[3].x = p.width * (1 / 4);
+        pens[3].y = p.height / 4;
+        pens[3].color = p.color(250, 100, 0);
+        return pens;
+      case '3':
         pens.length = 0;
         for (let i = 0; i < 3; i += 1) {
           pens.push(new Pen(p, 0, 250, p.color(0)));
@@ -46,7 +72,7 @@ const sketch = (p) => {
         pens[2].color = p.color(100, 0, 200);
 
         return pens;
-      case '3':
+      case '4':
         pens.length = 0;
         for (let i = 0; i < 5; i += 1) {
           pens.push(new Pen(p, 0, 250, p.color(0)));
@@ -69,7 +95,7 @@ const sketch = (p) => {
         pens[4].color = p.color(250, 100, 0);
 
         return pens;
-      case '4':
+      case '5':
         pens.length = 0;
         for (let i = 0; i < 6; i += 1) {
           pens.push(new Pen(p, 0, 250, p.color(0)));
@@ -94,7 +120,7 @@ const sketch = (p) => {
         pens[5].y = (1.5 * p.height) / 5;
         pens[5].color = p.color(100, 0, 200);
         return pens;
-      case '5':
+      case '6':
         pens.length = 0;
         for (let i = 0; i < 6; i += 1) {
           pens.push(new Pen(p, 0, 250, p.color(0)));
