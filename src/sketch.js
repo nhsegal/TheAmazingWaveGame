@@ -142,11 +142,6 @@ const sketch = (p) => {
     }
   };
 
-  p.preload = () => {
-    p.soundFormats('mp3', 'wav');
-    mySound = p.loadSound('cowbell.wav');
-  };
-
   p.setup = () => {
     p.createCanvas(width, 300);
     p.textAlign(p.CENTER);

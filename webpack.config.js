@@ -3,27 +3,14 @@ const htmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   entry: {
-    index: {
-      import: './src/index.js',
-      dependOn: 'shared',
-    },
-    sketch: {
-      import: './src/sketch.js',
-      dependOn: 'shared',
-    },
-    shared: './src/p5/p5.min.js',
-
+    main: path.resolve(__dirname, 'src/index.js')
   },
-
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].js',
+    filename: 'main.js',
     clean: true,
-  },
-  optimization: {
-    runtimeChunk: 'single',
   },
   devtool: "source-map",
   devServer: {
@@ -46,10 +33,6 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: "asset/resource",
-      }, 
-      {
-        test: /\.(mp3|wav)$/i,
-        type: "asset/resource",
       },
       {
         test: /\.wav$/,
@@ -66,6 +49,6 @@ module.exports = {
     filename: 'index.html',
     template: path.resolve(__dirname, 'src/template.html'),
     }),
-    new ESLintPlugin(),
+    new ESLintPlugin() 
   ],
 };
