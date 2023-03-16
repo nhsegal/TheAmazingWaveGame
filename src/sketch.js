@@ -158,7 +158,6 @@ const sketch = (p) => {
     document.querySelectorAll('select[name="level"]').forEach((option) => {
       option.addEventListener('change', (e) => {
         level = e.target.value;
-        console.log(level);
         levelSet();
         reset();
       });
